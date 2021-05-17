@@ -5,6 +5,9 @@ This app is static. I mean, This is a UI design. No backend.
 
 ## Screenshots
 
+
+  HomePage              |   Calendar Page | Task Create Page
+:-------------------------:|:-------------------------:|:---------------------:
 ![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot1.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot2.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot3.jpg?raw=true)
 
 
