@@ -7,7 +7,7 @@ This app is static. I mean, This is a UI design. No backend.
 
   HomePage              |   Calendar Page | Task Create Page
 :-------------------------:|:-------------------------:|:---------------------:
-![](https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/screenshots/screenshot1.jpg?raw=true)|![](https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/screenshots/screenshot2.jpg?raw=true)|![](https://github.com/TheAlphaApp/flutter-task-planner-app/blob/master/screenshots/screenshot3.jpg?raw=true)
+![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot1.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot2.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot3.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot4.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot5.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot5.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot6.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot7.jpg?raw=true)|![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot8.jpg?raw=true)
 
 
 ## Pull Requests
