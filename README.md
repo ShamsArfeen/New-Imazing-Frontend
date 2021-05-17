@@ -5,7 +5,7 @@ This app is static. I mean, This is a UI design. No backend.
 
 ## Screenshots
 
-![](https://github.com/ShamsArfeen/New-Imazing-Frontend/tree/master/screenshots/screenshot1.jpg?raw=true)
+![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot1.jpg?raw=true)
 
 
 ## Pull Requests
