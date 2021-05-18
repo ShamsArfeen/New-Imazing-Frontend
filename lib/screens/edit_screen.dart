@@ -174,10 +174,8 @@ class CalendarPage extends State<MyHomePage> {
         builder: (BuildContext context) {
           // return object of type Dialog
           return AlertDialog(
-            // title: new Text("Alert Dialog title"),
             content: new Text("Image saved successfully"),
             actions: <Widget>[
-              // usually buttons at the bottom of the dialog
               new TextButton(
                 child: new Text("Close"),
                 onPressed: () {
@@ -197,10 +195,8 @@ class CalendarPage extends State<MyHomePage> {
         builder: (BuildContext context) {
           // return object of type Dialog
           return AlertDialog(
-            // title: new Text("Alert Dialog title"),
             content: new Text("Image failed to save"),
             actions: <Widget>[
-              // usually buttons at the bottom of the dialog
               new TextButton(
                 child: new Text("Close"),
                 onPressed: () {
@@ -247,7 +243,7 @@ class CalendarPage extends State<MyHomePage> {
       isbusy = true;
     });
     final directory = await getApplicationDocumentsDirectory();
-    String appdir = directory.path;
+    String dir_app = directory.path;
     var postUri =
         Uri.parse("https://imazing-backend.herokuapp.com/" + api[operation]);
     var request = new http.MultipartRequest("POST", postUri);
@@ -264,7 +260,7 @@ class CalendarPage extends State<MyHomePage> {
         print(response.headers);
         String basename = pathlib.basename(_image.path);
         _image.deleteSync();
-        _image = File(appdir + '/A' + basename);
+        _image = File(dir_app + '/A' + basename);
         IOSink sink = _image.openWrite();
         await sink.addStream(
             response.stream); // this requires await as addStream is async
