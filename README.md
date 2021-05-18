@@ -27,19 +27,19 @@ Imazing is an online photo editing app that provides a collective space for vari
 ## Preview
 
 
-  Splash Screen              |   Home Screen | Camera
+  Splash Screen              |   Home Screen | Capture image
 :-------------------------:|:-------------------------:|:---------------------:
 ![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot1.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot2.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot3.jpg?raw=true)
 
 
-  Confirm Snap Page              |   Gallery | Tour Page
+  Confirm Image Page              |   Gallery | Edit Image Page
 :-------------------------:|:-------------------------:|:---------------------:
-![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot4.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot5.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot6.jpg?raw=true)
+![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot4.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot5.jpg?raw=true)| ![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot7.jpg?raw=true)
 
 
-  Edit Page             |   Help Dialogue | Save Confirm
+  Tour Page             |   Help Dialogue | Confirmation to Save image
 :-------------------------:|:-------------------------:|:---------------------:
-![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot7.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)
+![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot6.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)
 
 ## Dependencies
 
