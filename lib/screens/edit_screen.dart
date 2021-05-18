@@ -7,6 +7,7 @@ import 'package:image_gallery_saver/image_gallery_saver.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../theme/colors/light_colors.dart';
 import 'dart:io';
@@ -28,6 +29,13 @@ final apif = [
   'blur',
   'brighten',
   'contrast',
+  'highsharpen',
+  'highblur',
+  'highbrighten',
+  'highcontrast',
+  'alterrgb',
+  'savepng',
+  'savejpg',
 ];
 
 final List<Image> imgList = [
@@ -85,6 +93,7 @@ class CalendarPage extends State<MyHomePage> {
   String filepath;
   bool intensity = false;
   int currentFilter = 0;
+  bool isbusy = false;
 
   @override
   void initState() {
@@ -145,13 +154,21 @@ class CalendarPage extends State<MyHomePage> {
   }
 
   void saveBttn() async {
+    if (isbusy)
+      return;
     Map<Permission, PermissionStatus> statuses = await [
       Permission.storage,
     ].request();
+    setState(() {
+      isbusy = true;
+    });
     print(statuses[Permission.storage]);
     final result = await ImageGallerySaver.saveFile(_image.path);
     print(result);
     if (result['isSuccess'] == true) {
+      setState(() {
+        isbusy = false;
+      });
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -172,6 +189,9 @@ class CalendarPage extends State<MyHomePage> {
         },
       );
     } else if (result['isSuccess'] == false) {
+      setState(() {
+        isbusy = false;
+      });
       showDialog(
         context: context,
         builder: (BuildContext context) {
@@ -220,6 +240,12 @@ class CalendarPage extends State<MyHomePage> {
   }
 
   Future<Null> transformMatrix(int operation) async {
+    print('isbusy = ' + isbusy.toString());
+    if (isbusy)
+      return;
+    setState(() {
+      isbusy = true;
+    });
     final directory = await getApplicationDocumentsDirectory();
     String appdir = directory.path;
     var postUri =
@@ -242,27 +268,32 @@ class CalendarPage extends State<MyHomePage> {
         IOSink sink = _image.openWrite();
         await sink.addStream(
             response.stream); // this requires await as addStream is async
-        await sink.close(); // so does this
-        setState(() {});
+        await sink.close();
+        setState(() {
+          isbusy = false;
+          filepath = _image.path;
+        });
       }
     });
   }
 
   Future<Null> magicFilter() async {
+    print('isbusy = ' + isbusy.toString());
+    if (isbusy)
+      return;
+    setState(() {
+      isbusy = true;
+    });
     final directory = await getApplicationDocumentsDirectory();
     String appdir = directory.path;
     var postUri =
-        Uri.parse("http://imazing-backend.herokuapp.com/" + apif[currentFilter]);
+          Uri.parse("http://imazing-backend.herokuapp.com/" + apif[currentFilter]);
     var request = new http.MultipartRequest("POST", postUri);
-
-    if (intensity)
-      request.fields['factor'] = '100';
     request.files.add(await http.MultipartFile.fromPath(
       'file',
       _image.path,
     ));
     request.send().then((response) async {
-      int t = response.statusCode;
       if (response.statusCode == 200) {
         print("Uploaded!");
         print(response.headers);
@@ -272,8 +303,11 @@ class CalendarPage extends State<MyHomePage> {
         IOSink sink = _image.openWrite();
         await sink.addStream(
             response.stream); // this requires await as addStream is async
-        await sink.close(); // so does this
-        setState(() {});
+        await sink.close();
+        setState(() {
+          isbusy = false;
+          filepath = _image.path;
+        });
       }
     });
   }
@@ -326,10 +360,8 @@ class CalendarPage extends State<MyHomePage> {
                                       borderRadius: BorderRadius.circular(10),
                                     ),
                                     child: PinchZoom(
-                                      image: Image.file(_image),
+                                      image: Image.file(File(filepath)),
                                       zoomedBackgroundColor: Colors.black87,
-                                      resetDuration:
-                                          const Duration(milliseconds: 100),
                                       maxScale: 3,
                                       onZoomStart: () {
                                         print('Start zooming');
@@ -394,7 +426,7 @@ class CalendarPage extends State<MyHomePage> {
                               },
                               child: Chip(
                                 label: Text("Sharp"),
-                                backgroundColor: (currentFilter != 0 || intensity != false)
+                                backgroundColor: (currentFilter != 0)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -409,7 +441,7 @@ class CalendarPage extends State<MyHomePage> {
                               },
                               child: Chip(
                                 label: Text("Blur"),
-                                backgroundColor: (currentFilter != 1  || intensity != false)
+                                backgroundColor: (currentFilter != 1)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -424,7 +456,7 @@ class CalendarPage extends State<MyHomePage> {
                               },
                               child: Chip(
                                 label: Text("Bright"),
-                                backgroundColor: (currentFilter != 2  || intensity != false)
+                                backgroundColor: (currentFilter != 2)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -438,8 +470,8 @@ class CalendarPage extends State<MyHomePage> {
                                 filterSelect(3);
                               },
                               child: Chip(
-                                label: Text("Contrast"),
-                                backgroundColor: (currentFilter != 3  || intensity != false)
+                                label: Text("Saturation"),
+                                backgroundColor: (currentFilter != 3)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -450,11 +482,11 @@ class CalendarPage extends State<MyHomePage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                filterSelect(0, high: true);
+                                filterSelect(4, high: true);
                               },
                               child: Chip(
                                 label: Text("High Sharp"),
-                                backgroundColor: (currentFilter != 0   || intensity != true)
+                                backgroundColor: (currentFilter != 4)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -465,11 +497,11 @@ class CalendarPage extends State<MyHomePage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                filterSelect(1, high: true);
+                                filterSelect(5, high: true);
                               },
                               child: Chip(
                                 label: Text("High Blur"),
-                                backgroundColor: (currentFilter != 1  || intensity != true)
+                                backgroundColor: (currentFilter != 5)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -480,11 +512,11 @@ class CalendarPage extends State<MyHomePage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                filterSelect(2, high: true);
+                                filterSelect(6, high: true);
                               },
                               child: Chip(
                                 label: Text("High Bright"),
-                                backgroundColor: (currentFilter != 2  || intensity != true)
+                                backgroundColor: (currentFilter != 6)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -495,11 +527,56 @@ class CalendarPage extends State<MyHomePage> {
                             ),
                             GestureDetector(
                               onTap: () {
-                                filterSelect(3, high: true);
+                                filterSelect(7, high: true);
                               },
                               child: Chip(
-                                label: Text("High Contrast"),
-                                backgroundColor: (currentFilter != 3  || intensity != true)
+                                label: Text("High Saturation"),
+                                backgroundColor: (currentFilter != 7)
+                                    ? Colors.indigo.shade200
+                                    : LightColors.kRed,
+                                labelStyle: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox( 
+                              width: 7,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                filterSelect(8, high: true);
+                              },
+                              child: Chip(
+                                label: Text("Alter RGB"),
+                                backgroundColor: (currentFilter != 8)
+                                    ? Colors.indigo.shade200
+                                    : LightColors.kRed,
+                                labelStyle: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox( 
+                              width: 7,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                filterSelect(9, high: true);
+                              },
+                              child: Chip(
+                                label: Text("Convert to PNG"),
+                                backgroundColor: (currentFilter != 9)
+                                    ? Colors.indigo.shade200
+                                    : LightColors.kRed,
+                                labelStyle: TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            SizedBox( 
+                              width: 7,
+                            ),
+                            GestureDetector(
+                              onTap: () {
+                                filterSelect(10, high: true);
+                              },
+                              child: Chip(
+                                label: Text("Convert to JPG"),
+                                backgroundColor: (currentFilter != 10)
                                     ? Colors.indigo.shade200
                                     : LightColors.kRed,
                                 labelStyle: TextStyle(color: Colors.white),
@@ -511,7 +588,7 @@ class CalendarPage extends State<MyHomePage> {
                       Container(
                         height: 50,
                         width: MediaQuery.of(context).size.width,
-                        child: Row(
+                        child: isbusy ? SpinKitCircle(color: Colors.blue) : Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.stretch,
                           children: <Widget>[
