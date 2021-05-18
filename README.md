@@ -41,3 +41,23 @@ Imazing is an online photo editing app that provides a collective space for vari
 :-------------------------:|:-------------------------:|:---------------------:
 ![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot7.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)|![](http://github.com/ShamsArfeen/New-Imazing-Frontend/blob/master/screenshots/screenshot8.jpg?raw=true)
 
+## Dependencies
+
+The following packages are needed for the development of this application.
+
+- cupertino_icons
+- percent_indicator
+- image_picker
+- pinch_zoom
+- image_gallery_saver
+- http
+- path_provider
+- flutter_launcher_icons
+- carousel_slider
+- permission_handler
+
+## Contributors
+
+<a href="https://github.com/codenameakshay/image-editor/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=ShamsArfeen/New-Imazing-Frontend" />
+</a>
