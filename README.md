@@ -16,6 +16,7 @@ Imazing is an online photo editing app that provides a collective space for vari
 - Left rotation, right rotation and flipping of the image can be done
 - Mirror the image
 - Apply emboss and Blur
+- Alternate RGB channels
 - Brightness of the inage can be increased
 - Save image to gallery
 
