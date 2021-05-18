@@ -14,7 +14,12 @@ Imazing is an online photo editing app that provides a collective space for vari
 - Brightness of the inage can be increased
 - Save image to gallery
 
-## Screenshots
+##Benefits
+- Easy image editing
+- Scalable
+- User friendly interface
+
+## Preview
 
 
   Splash Screen              |   Home Screen | Camera
