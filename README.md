@@ -1,4 +1,4 @@
-### Imazing - An Image Editing App
+## Imazing - An Image Editing App
 
 ![flutter](https://img.shields.io/badge/Flutter-Framework-green?logo=flutter)
 ![Dart](https://img.shields.io/badge/Dart-Language-blue?logo=dart)
