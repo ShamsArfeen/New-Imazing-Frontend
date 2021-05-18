@@ -1,5 +1,8 @@
 ### Imazing - An Image Editing App
 
+![flutter](https://img.shields.io/badge/Flutter-Framework-green?logo=flutter)
+![Dart](https://img.shields.io/badge/Dart-Language-blue?logo=dart)
+
 Imazing is an online photo editing app that provides a collective space for various image editing tools, with an easy interface for users to interact with.
 
 ## Features
